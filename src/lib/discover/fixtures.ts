@@ -1,0 +1,80 @@
+// Sample Fragella-style records (shape per api.fragella.com documentation) used
+// by unit tests and the local mock server. Values are illustrative.
+
+export const FRAGELLA_SAMPLE = {
+  _id: '65a1f0c2e4b0a1b2c3d4e5f6',
+  Name: 'Khamrah',
+  Brand: 'Lattafa Perfumes',
+  Year: '2022',
+  Country: 'United Arab Emirates',
+  Gender: 'unisex',
+  OilType: 'Eau de Parfum',
+  'Image URL': 'https://images.fragella.example/khamrah.jpg',
+  'Image URL Transparent': 'https://images.fragella.example/khamrah.webp',
+  'Image Fallbacks': ['https://images.fragella.example/khamrah-alt.jpg'],
+  rating: '4.25',
+  Longevity: 'Long Lasting',
+  Sillage: 'Strong',
+  Price: '$$',
+  'Purchase URL': 'https://shop.example.com/khamrah',
+  perfumers: [],
+  'Main Accords': ['sweet', 'warm spicy', 'amber', 'vanilla', 'cinnamon', 'boozy'],
+  'Main Accords Percentage': {
+    sweet: 'Dominant',
+    'warm spicy': 'Prominent',
+    amber: 'Prominent',
+    vanilla: 'Moderate',
+    cinnamon: 'Moderate',
+    boozy: 'Subtle',
+  },
+  'General Notes': ['cinnamon', 'nutmeg', 'bergamot', 'dates', 'praline', 'tuberose', 'vanilla', 'tonka bean'],
+  Notes: {
+    Top: [{ name: 'Cinnamon' }, { name: 'Nutmeg' }, { name: 'Bergamot' }],
+    Middle: [{ name: 'Dates' }, { name: 'Praline' }, { name: 'Tuberose' }],
+    Base: [{ name: 'Vanilla' }, { name: 'Tonka Bean' }, { name: 'Amberwood' }],
+  },
+  'Season Ranking': [
+    { name: 'winter', score: 2.4 },
+    { name: 'fall', score: 2.1 },
+    { name: 'spring', score: 0.9 },
+    { name: 'summer', score: 0.4 },
+  ],
+  'Occasion Ranking': [
+    { name: 'evening', score: 2.2 },
+    { name: 'night out', score: 2.0 },
+    { name: 'leisure', score: 1.1 },
+    { name: 'business', score: 0.6 },
+  ],
+}
+
+export const FRAGELLA_FRESH = {
+  _id: '65a1f0c2e4b0a1b2c3d4e5f7',
+  Name: 'Light Blue Pour Homme',
+  Brand: 'Dolce&Gabbana',
+  Year: 2007,
+  Country: 'Italy',
+  Gender: 'for men',
+  OilType: 'Eau de Toilette',
+  'Image URL': 'https://images.fragella.example/lbph.jpg',
+  Longevity: 'Moderate',
+  Sillage: 'Moderate',
+  'Main Accords': ['citrus', 'aromatic', 'fresh spicy', 'marine', 'woody'],
+  'Main Accords Percentage': { citrus: 'Dominant', aromatic: 'Prominent', 'fresh spicy': 'Prominent', marine: 'Moderate', woody: 'Moderate' },
+  Notes: {
+    Top: [{ name: 'Grapefruit' }, { name: 'Bergamot' }, { name: 'Sicilian Mandarin' }],
+    Middle: [{ name: 'Pepper' }, { name: 'Rosemary' }, { name: 'Rosewood' }],
+    Base: [{ name: 'Musk' }, { name: 'Incense' }, { name: 'Oakmoss' }],
+  },
+  'Season Ranking': [
+    { name: 'summer', score: 3.1 },
+    { name: 'spring', score: 2.6 },
+    { name: 'fall', score: 0.8 },
+    { name: 'winter', score: 0.3 },
+  ],
+  'Occasion Ranking': [
+    { name: 'daily', score: 2.8 },
+    { name: 'business', score: 2.1 },
+    { name: 'sport', score: 1.9 },
+    { name: 'night out', score: 0.5 },
+  ],
+}

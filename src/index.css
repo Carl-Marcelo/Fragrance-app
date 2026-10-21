@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* -----------------------------------------------------------------------------
+   Design tokens — warm, light journal feel. Components use these semantic
+   names only, so the dark theme is a pure token swap.
+   ----------------------------------------------------------------------------- */
+:root {
+  --canvas: #f8f5f0;
+  --surface: #fdfbf8;
+  --sunken: #f1ece4;
+  --line: #e5ddd1;
+  --line-strong: #d3c7b7;
+  --ink: #2b2521;
+  --ink-2: #5f554d;
+  --ink-3: #766b62;
+  --accent: #7f6142;
+  --accent-hover: #6e5338;
+  --accent-ink: #fffdf9;
+  --accent-soft: #efe5d8;
+  --success: #4f6e4b;
+  --success-soft: #e6ede2;
+  --warning: #8f5f22;
+  --warning-soft: #f6ead8;
+  --danger: #9a4038;
+  --danger-soft: #f6e3df;
+  --info: #4c6478;
+  --info-soft: #e3eaf0;
+  --shadow: 0 1px 2px rgb(60 44 30 / 0.05), 0 4px 16px -6px rgb(60 44 30 / 0.08);
+  --overlay: rgb(43 37 33 / 0.32);
+  color-scheme: light;
+}
+
+.dark {
+  --canvas: #1c1917;
+  --surface: #24201d;
+  --sunken: #2c2724;
+  --line: #3a3430;
+  --line-strong: #4d453f;
+  --ink: #ede6dc;
+  --ink-2: #bcb1a5;
+  --ink-3: #91877d;
+  --accent: #cfaa7f;
+  --accent-hover: #ddb98f;
+  --accent-ink: #1c1917;
+  --accent-soft: #3a2f25;
+  --success: #93b38c;
+  --success-soft: #26301f;
+  --warning: #dcab68;
+  --warning-soft: #3a2d1a;
+  --danger: #e0907f;
+  --danger-soft: #3d2420;
+  --info: #9ab6cc;
+  --info-soft: #1f2a33;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 20px -8px rgb(0 0 0 / 0.45);
+  --overlay: rgb(0 0 0 / 0.55);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --shadow-soft: var(--shadow);
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-ink;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  /* Cormorant's default old-style figures make "1" read as "I". */
+  h1,
+  h2,
+  h3,
+  .font-display {
+    /* The variable keeps lining figures when combined with utilities like tabular-nums. */
+    --tw-numeric-figure: lining-nums;
+    font-variant-numeric: lining-nums;
+  }
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+  }
+  dialog::backdrop {
+    background: var(--overlay);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-ink-3;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-surface;
+  }
+  .field-input {
+    @apply w-full rounded-md border border-line-strong bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-3
+      transition-colors hover:border-ink-3 focus:border-accent focus:outline-none focus-visible:outline-none
+      focus:ring-2 focus:ring-accent/25 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .link {
+    @apply text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent;
+  }
+}
+
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.fade-in {
+  animation: fade-in 220ms ease-out both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

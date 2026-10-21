@@ -1,0 +1,62 @@
+import type { CollectionStatus, FragranceInput, ItemInput } from './types'
+
+export function blankFragrance(): FragranceInput {
+  return {
+    is_public: false,
+    name: '',
+    brand: '',
+    concentration: null,
+    release_year: null,
+    family: null,
+    perfumers: [],
+    description: null,
+    notes_top: [],
+    notes_middle: [],
+    notes_base: [],
+    accords: [],
+    sweetness: null,
+    freshness: null,
+    darkness: null,
+    masculinity: null,
+    projection: null,
+    longevity: null,
+    suit_hot: null,
+    suit_humid: null,
+    suit_rainy: null,
+    suit_aircon: null,
+    suit_day: null,
+    suit_night: null,
+    suit_office: null,
+    suit_date: null,
+    suit_special: null,
+    info_status: 'unverified',
+    ratings_basis: 'personal',
+    source_links: [],
+    image_url: null,
+    image_path: null,
+    image_credit: null,
+    external_source: null,
+    external_id: null,
+    brand_country: null,
+  }
+}
+
+export function blankItem(status: CollectionStatus, currency = 'PHP'): ItemInput {
+  return {
+    status,
+    is_favorite: false,
+    personal_rating: null,
+    personal_notes: null,
+    want_reason: null,
+    wishlist_priority: null,
+    bottle_size_ml: null,
+    remaining_percent: status === 'owned' ? 100 : null,
+    is_decant: false,
+    purchase_price: null,
+    currency,
+    purchase_date: null,
+    purchase_from: null,
+    bottle_image_path: null,
+    spray_overrides: {},
+  }
+}
